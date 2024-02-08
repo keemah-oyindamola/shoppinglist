@@ -21,8 +21,9 @@
         margin-top: 30px;
         height: 30px;
        border-color: white;
+       color: white;
     }
-    button{
+    #cbutton{
         background-color: black;
         color: white;
         width: 150px;
@@ -32,6 +33,10 @@
     }
     table,thead,tr,th{
         border-collapse: collapse;
+        color: white;
+        border: 2px solid black;
+        margin-top: 20px;
+        padding: 30px;
     }
 </style>
 <body>
@@ -40,7 +45,7 @@
     <input placeholder="ITEMS" type="text" name="" id="item"><br>
     <input placeholder="Quantity" type="text" name="" id="qty"><br>
     <input placeholder="Price" type="number" name="" id="price"><br>
-    <button onclick="add_items()">ADD</button>
+    <button id="cbutton" onclick="add_items()">ADD</button>
 
     <table>
         <thead>
@@ -52,8 +57,52 @@
                 <th>TOTAL AMOUNT</th>
                 <th>ACTIONS</th>
             </tr>
-        </thead>
+        </thead >
+        <tbody style="border: 2px solid black;" id="disp_items"></tbody>
     </table>
 </center>
 </body>
 </html>
+<script>
+    let all_items=[];
+    let disp_items=document.getElementById('disp_items')
+
+    function add_items(){
+        let data={
+            item:item.value,
+            qty:qty.value,
+            price:price.value
+        }
+        all_items.push(data)
+        console.log(all_items);
+        disp_items.innerHTML=' '
+        recall()
+
+    }
+    function remove(index){
+        all_items.splice(index,1)
+        disp_items.innerHTML=' '
+        recall()
+        console.log(index);
+    }
+    function recall(){
+        all_items.forEach((element,index) => {
+        disp_items.innerHTML+=`
+                <tr>
+                    <td style="border: 2px solid black; padding:20px;">${index+1}</td>
+                    <td style="border: 2px solid black; padding:20px;">${element.item}</td>
+                    <td style="border: 2px solid black; padding:20px;">${element.qty}</td>
+                    <td style="border: 2px solid black; padding:20px;">${element.price}</td>
+                    <td style="border: 2px solid black; padding:20px;">${(element.qty)*(element.price)}</td>
+                    <td style="display:flex;">
+                      <button style="width:100px; height:30px; color:white;" onclick='remove(${index})'>Delete</button>  
+                      <button style="width:100px; height:30px;">Edit</button>  
+                        
+                    </td>
+                </tr>
+
+          `
+        });
+    }
+
+</script>
