@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        background-color: purple;
+    }
+    h1{
+        color: white;
+        margin-top: 50px;
+        font-family: cursive;
+    }
+    input{
+        width: 250px ;
+        margin-top: 30px;
+        height: 30px;
+       border-color: white;
+    }
+    button{
+        background-color: black;
+        color: white;
+        width: 150px;
+        height: 30px;
+        margin-left: 460px;
+        margin-top: 10px;
+    }
+    table,thead,tr,th{
+        border-collapse: collapse;
+    }
+</style>
+<body>
+    <center>
+    <h1>SHOPPING LIST</h1>
+    <input placeholder="ITEMS" type="text" name="" id="item"><br>
+    <input placeholder="Quantity" type="text" name="" id="qty"><br>
+    <input placeholder="Price" type="number" name="" id="price"><br>
+    <button onclick="add_items()">ADD</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>S/N</th>
+                <th>ITEMS</th>
+                <th>QTY</th>
+                <th>PRICE/1</th>
+                <th>TOTAL AMOUNT</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+    </table>
+</center>
+</body>
+</html>
